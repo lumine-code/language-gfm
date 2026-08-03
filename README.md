@@ -8,6 +8,10 @@ GitHub Flavored Markdown language support.
 - **Syntax highlighting**: full grammar coverage for GitHub Flavored Markdown files.
 - **Snippets**: shortcuts for common Markdown constructs.
 
+## Installation
+
+To install `language-gfm` search for _language-gfm_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-gfm`.
+
 ## Services
 
 - **hyperlink.injection** (`^1.0.0`): consumed to highlight URLs inside documents as clickable links.
