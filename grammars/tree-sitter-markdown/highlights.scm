@@ -46,7 +46,7 @@
 
 (list_item
   (list_marker_dot) @punctuation.definition.list-item.gfm
-) @markup.list.numbered
+) @markup.list.numbered.gfm
 
 (list_item
   [
@@ -54,7 +54,7 @@
     (list_marker_minus)
     (list_marker_plus)
   ] @punctuation.definition.list-item.gfm
-) @markup.list.unnumbered
+) @markup.list.unnumbered.gfm
 
 (task_list_marker_unchecked) @punctuation.definition.task-marker.unchecked.gfm
 (task_list_marker_checked) @punctuation.definition.task-marker.unchecked.gfm
@@ -89,6 +89,6 @@
   (link_label)
   (link_destination) @markup.underline.link.gfm)
 
-((link_label) @meta.link.text
+((link_label) @meta.link.text.gfm
   (#set! adjust.offsetStart 1)
   (#set! adjust.offsetEnd -1))

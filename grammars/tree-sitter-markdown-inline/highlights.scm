@@ -26,7 +26,7 @@
 ; INLINE/REPLACED
 ; ===============
 
-((uri_autolink) @markup.underline.link
+((uri_autolink) @markup.underline.link.gfm
   (#set! adjust.startAfterFirstMatchOf "^<")
   (#set! adjust.endBeforeFirstMatchOf ">$"))
 
@@ -39,7 +39,7 @@
 ((link_text (image (image_description))) @_IGNORE_
   (#set! capture.final))
 
-[(link_text) (image_description)] @string.unquoted.gfm @meta.link.text
+[(link_text) (image_description)] @string.unquoted.gfm @meta.link.text.gfm
 
 ; The text inside []s in anchors/image syntax.
 (full_reference_link
