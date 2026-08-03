@@ -1,6 +1,6 @@
 {
   "scopeName": "source.gfm.inline",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "parser": "tree-sitter-markdown_inline",
   "injectionRegex": "^(markdown-inline-internal)$",
   "treeSitter": {
