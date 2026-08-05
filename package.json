@@ -15,7 +15,7 @@
   "repository": "https://github.com/lumine-code/language-gfm",
   "license": "MIT",
   "engines": {
-    "atom": "*"
+    "lumine": "*"
   },
   "consumedServices": {
     "hyperlink.injection": {
