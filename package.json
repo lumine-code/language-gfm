@@ -3,6 +3,13 @@
   "author": "lumine-code",
   "version": "1.0.0",
   "main": "lib/main",
+  "files": [
+    "grammars",
+    "lib",
+    "settings",
+    "snippets",
+    "spec"
+  ],
   "description": "GitHub Flavored Markdown language support.",
   "keywords": [
     "markdown",
