@@ -2,10 +2,10 @@ describe("GitHub Flavored Markdown grammar", function () {
   let grammar = null;
 
   beforeEach(function () {
-    atom.config.set("language.useTreeSitterParsers", false);
-    waitsForPromise(() => atom.packages.activatePackage("language-gfm"));
+    lumine.config.set("language.useTreeSitterParsers", false);
+    waitsForPromise(() => lumine.packages.activatePackage("language-gfm"));
 
-    runs(() => (grammar = atom.grammars.grammarForScopeName("source.gfm")));
+    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.gfm")));
   });
 
   it("parses the grammar", function () {

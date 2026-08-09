@@ -7,14 +7,14 @@ const path = require("path");
 
 describe("GitHub Flavored Markdown sample fixtures", () => {
   beforeEach(async () => {
-    await atom.packages.activatePackage("language-python");
-    await atom.packages.activatePackage("language-javascript");
-    await atom.packages.activatePackage("language-gfm");
-    atom.config.set("language.useTreeSitterParsers", true);
+    await lumine.packages.activatePackage("language-python");
+    await lumine.packages.activatePackage("language-javascript");
+    await lumine.packages.activatePackage("language-gfm");
+    lumine.config.set("language.useTreeSitterParsers", true);
   });
 
   it("parses sample.md without error", async () => {
-    const editor = await atom.workspace.open(path.join(__dirname, "fixtures", "sample.md"));
+    const editor = await lumine.workspace.open(path.join(__dirname, "fixtures", "sample.md"));
     const languageMode = editor.getBuffer().getLanguageMode();
     await languageMode.ready;
 
