@@ -54,10 +54,12 @@ module.exports = [
         // Globals the editor's spec runner installs on `window`; see
         // spec/helpers/ and spec/runners/ in the editor.
         advanceClock: "readonly",
-        waits: "readonly",
-        waitsFor: "readonly",
-        waitsForPromise: "readonly",
-        runs: "readonly",
+        // Waiting primitives injected onto `window` by the editor's spec harness.
+        conditionPromise: "readonly",
+        emitterEventPromise: "readonly",
+        flushMicrotasks: "readonly",
+        timeoutPromise: "readonly",
+        waitForFrames: "readonly",
         runGrammarTests: "readonly",
         runFoldsTests: "readonly",
         normalizeTreeSitterTextData: "readonly",

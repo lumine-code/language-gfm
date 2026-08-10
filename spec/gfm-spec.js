@@ -1,11 +1,11 @@
 describe("GitHub Flavored Markdown grammar", function () {
   let grammar = null;
 
-  beforeEach(function () {
+  beforeEach(async () => {
     lumine.config.set("language.useTreeSitterParsers", false);
-    waitsForPromise(() => lumine.packages.activatePackage("language-gfm"));
+    await lumine.packages.activatePackage("language-gfm");
 
-    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.gfm")));
+    grammar = lumine.grammars.grammarForScopeName("source.gfm");
   });
 
   it("parses the grammar", function () {
