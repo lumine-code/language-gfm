@@ -12,7 +12,7 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
   };
 
   beforeEach(async () => {
-    lumine.config.set("language.useTreeSitterParsers", true);
+    lumine.config.set("editor.useTreeSitterParsers", true);
     await lumine.packages.activatePackage("language-gfm");
     editor = await lumine.workspace.open();
     editor.setGrammar(lumine.grammars.grammarForScopeName("source.gfm"));

@@ -1,12 +1,12 @@
 {
   ".source.gfm:not(.markup.code)": {
-    "language": {
-      "softWrap": true,
+    "editor": {
       "commentStart": "<!-- ",
       "commentEnd": " -->",
       "commentDelimiters": {
         "block": ["<!--", "-->"]
-      }
+      },
+      "softWrap": true
     }
   }
 }
