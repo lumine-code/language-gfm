@@ -10,7 +10,6 @@ describe("GitHub Flavored Markdown sample fixtures", () => {
     await lumine.packages.activatePackage("language-python");
     await lumine.packages.activatePackage("language-javascript");
     await lumine.packages.activatePackage("language-gfm");
-    lumine.config.set("editor.useTreeSitterParsers", true);
   });
 
   it("parses sample.md without error", async () => {

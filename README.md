@@ -4,7 +4,7 @@ GitHub Flavored Markdown language support.
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-markdown](https://github.com/tree-sitter-grammars/tree-sitter-markdown) and TextMate grammars derived from [atom/language-gfm](https://github.com/atom/language-gfm).
+- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-markdown](https://github.com/tree-sitter-grammars/tree-sitter-markdown).
 - **Syntax highlighting**: full grammar coverage for GitHub Flavored Markdown files.
 - **Snippets**: shortcuts for common Markdown constructs.
 
