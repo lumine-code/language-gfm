@@ -6,7 +6,7 @@
   "injectionNames": ["markdown", "gfm"],
   "treeSitter": {
     "parserSource": "github:tree-sitter-grammars/tree-sitter-markdown/tree-sitter-markdown#v0.5.3",
-    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "markdown.wasm",
     "highlightsQuery": "gfm-highlights.scm",
     "foldsQuery": "gfm-folds.scm",
