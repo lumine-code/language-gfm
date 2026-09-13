@@ -3,7 +3,7 @@
   "type": "tree-sitter",
   "name": "GitHub Markdown",
   "parser": "tree-sitter-markdown",
-  "injectionNames": ["markdown", "gfm"],
+  "injectionNames": ["markdown", "md", "gfm"],
   "treeSitter": {
     "parserSource": "github:tree-sitter-grammars/tree-sitter-markdown/tree-sitter-markdown#v0.5.3",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
