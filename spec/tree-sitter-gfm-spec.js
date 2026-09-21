@@ -69,5 +69,10 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
     it("still highlights emphasis in a paragraph", () => {
       expect(scopesFor(0, 29)).toContain("markup.italic.gfm");
     });
+
+    it("highlights command names with punctuation in a code span", async () => {
+      await setText("A paragraph with `title-bar:toggle`.\n");
+      expect(scopesFor(0, 20)).toContain("markup.raw.inline.gfm");
+    });
   });
 });
