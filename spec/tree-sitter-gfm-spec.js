@@ -29,8 +29,8 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
       await setText(TABLE);
     });
 
-    it("parses the table without error", () => {
-      expect(languageMode.tree.rootNode.hasError).toBe(false);
+    it("parses the table without error", async () => {
+      expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
     });
 
     it("highlights a code span in a header cell", () => {
