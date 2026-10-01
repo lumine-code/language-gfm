@@ -18,6 +18,6 @@ describe("GitHub Flavored Markdown sample fixtures", () => {
     await languageMode.ready;
 
     expect(editor.getGrammar().scopeName).toBe("source.gfm");
-    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
   });
 });

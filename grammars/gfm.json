@@ -9,6 +9,7 @@
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "markdown.wasm",
     "highlightsQuery": "gfm-highlights.scm",
+    "injectionsQuery": "gfm-injections.scm",
     "foldsQuery": "gfm-folds.scm",
     "tagsQuery": "gfm-tags.scm"
   },

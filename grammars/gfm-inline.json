@@ -7,6 +7,7 @@
     "parserSource": "github:tree-sitter-grammars/tree-sitter-markdown/tree-sitter-markdown-inline#v0.5.3",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "markdown-inline.wasm",
-    "highlightsQuery": "gfm-inline-highlights.scm"
+    "highlightsQuery": "gfm-inline-highlights.scm",
+    "injectionsQuery": "gfm-inline-injections.scm"
   }
 }
