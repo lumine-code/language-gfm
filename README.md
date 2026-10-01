@@ -12,9 +12,9 @@ GitHub Flavored Markdown language support.
 
 To install `language-gfm` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-gfm`.
 
-## Services
+## Injections
 
-- `hyperlink.injection`: consumed to highlight URLs inside documents as clickable links.
+- Static Tree-sitter injections highlight URLs with `language-hyperlink`.
 
 ## Contributing
 

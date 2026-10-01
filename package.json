@@ -2,10 +2,8 @@
   "name": "language-gfm",
   "author": "lumine-code",
   "version": "1.0.0",
-  "main": "lib/main",
   "files": [
     "grammars",
-    "lib",
     "settings",
     "snippets",
     "spec"
@@ -23,13 +21,6 @@
   "license": "MIT",
   "engines": {
     "lumine": "^1.0.0"
-  },
-  "consumedServices": {
-    "hyperlink.injection": {
-      "versions": {
-        "^1.0.0": "consumeHyperlinkInjection"
-      }
-    }
   },
   "bugs": {
     "url": "https://github.com/lumine-code/language-gfm/issues"
