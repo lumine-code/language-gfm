@@ -2,6 +2,8 @@
 
 GitHub Flavored Markdown language support.
 
+Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/language-gfm`).
+
 ## Features
 
 - **Grammars**: provides Tree-sitter grammars built from [tree-sitter-markdown](https://github.com/tree-sitter-grammars/tree-sitter-markdown).
