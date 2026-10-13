@@ -1,0 +1,16 @@
+{
+  "title": "language-gfm",
+  "description": "GitHub Markdown syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "0e4083e78521c6cd3bfe08cf0bcba63a8a18b417",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "GitHub Markdown syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 820
+    }
+  ]
+}

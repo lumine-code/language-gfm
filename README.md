@@ -10,6 +10,8 @@ Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/l
 - **Syntax highlighting**: full grammar coverage for GitHub Flavored Markdown files.
 - **Snippets**: shortcuts for common Markdown constructs.
 
+![GitHub Markdown syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-gfm` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-gfm`.
