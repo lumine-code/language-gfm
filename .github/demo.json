@@ -1,16 +1,61 @@
 {
   "title": "language-gfm",
-  "description": "GitHub Markdown syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "0e4083e78521c6cd3bfe08cf0bcba63a8a18b417",
+  "description": "GitHub Markdown syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "0b7435801aa225105de22053951b9daf9aefe1a1",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "28f8051cd1b42eb75e7866b20f433159f46b411bbc0eb7a4db12465c0b3d2467",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 820 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "c4d7a05fe6960ae6fb041981d6cf13e9c0286b17",
+      "dirty": true,
+      "workingTreeHash": "af0ec098e764416df9522f3c6e555050b520e4700da382b2b983b2ff3742bd0a"
+    },
+    "package": {
+      "revision": "0b7435801aa225105de22053951b9daf9aefe1a1",
+      "dirty": true,
+      "workingTreeHash": "366b221660f7d28f3a9f4cd9085212df229a51840037b47a40b93d8319bbacb6"
+    },
+    "language-gfm": {
+      "revision": "0b7435801aa225105de22053951b9daf9aefe1a1",
+      "dirty": true,
+      "workingTreeHash": "366b221660f7d28f3a9f4cd9085212df229a51840037b47a40b93d8319bbacb6"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "25d6ed50595d6b10f7d53e41dbbe8f92dcb5c0e911871356f3e6138e5c76df57"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "example.md",
+      "sha256": "942086a94b3a1e7e4c67520db9d80a55a614054293893084b1410fe84573e6fc"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "GitHub Markdown syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 820
+      "height": 820,
+      "sha256": "7a0e30f5e83ffc3d8affa99f7fbe0161a9b819ca406698364e35d905d0468a5a"
     }
   ]
 }
