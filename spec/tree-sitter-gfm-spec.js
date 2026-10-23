@@ -21,6 +21,41 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
     editor.setGrammar(lumine.grammars.grammarForScopeName("source.gfm"));
   });
 
+  for (const comment of ["<!-->", "<!--->"]) {
+    it(`ends the short ${comment} comment before the following heading`, async () => {
+      await setText(`${comment}\n\n# Visible heading\n`);
+      expect(languageMode.tree.rootNode.hasError).toBe(false);
+      expect(
+        languageMode.tree.rootNode.descendantsOfType("atx_heading").map((node) => node.text),
+      ).toEqual(["# Visible heading\n"]);
+      expect(scopesFor(2, 3)).toContain("markup.heading.heading-1.gfm");
+    });
+  }
+
+  it("bounds deep scanner state and preserves following headings after an edit", async () => {
+    await setText(`${"> ".repeat(1800)}deep\n\n# Visible heading\n`);
+    expect(languageMode.tree.rootNode.hasError).toBe(false);
+    editor.getBuffer().setTextInRange(
+      [
+        [2, 2],
+        [2, 9],
+      ],
+      "Updated",
+    );
+    await languageMode.atTransactionEnd();
+    expect(languageMode.tree.rootNode.hasError).toBe(false);
+    expect(
+      languageMode.tree.rootNode.descendantsOfType("atx_heading").map((node) => node.text),
+    ).toEqual(["# Updated heading\n"]);
+  });
+
+  it("keeps non-ASCII code points out of ordered-list markers", async () => {
+    await setText("1\u0661. prose\n\n# Visible heading\n");
+    expect(languageMode.tree.rootNode.hasError).toBe(false);
+    expect(languageMode.tree.rootNode.descendantsOfType("list_item")).toEqual([]);
+    expect(languageMode.tree.rootNode.descendantsOfType("atx_heading").length).toBe(1);
+  });
+
   describe("inline content inside table cells", () => {
     const TABLE = [
       "| `verb` | means |",

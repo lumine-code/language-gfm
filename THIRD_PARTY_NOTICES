@@ -31,7 +31,8 @@ SOFTWARE.
 
 ----- BEGIN THIRD-PARTY LICENSE: parser:tree-sitter-grammars_tree-sitter-markdown -----
 Source: https://github.com/tree-sitter-grammars/tree-sitter-markdown
-Revision: v0.5.3
+Commit: b6dac978ea390d64f842d6c2a3fb5b80d902c834
+Ref: b6dac978ea390d64f842d6c2a3fb5b80d902c834
 
 Original file: LICENSE
 
