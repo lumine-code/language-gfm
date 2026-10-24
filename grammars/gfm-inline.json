@@ -5,7 +5,7 @@
   "injectionNames": ["markdown-inline-internal"],
   "treeSitter": {
     "parserSource": "github:tree-sitter-grammars/tree-sitter-markdown/tree-sitter-markdown-inline#v0.5.3",
-    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "markdown-inline.wasm",
     "highlightsQuery": "gfm-inline-highlights.scm",
     "injectionsQuery": "gfm-inline-injections.scm"
