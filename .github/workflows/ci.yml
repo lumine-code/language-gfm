@@ -91,3 +91,9 @@ jobs:
         working-directory: lumine
         timeout-minutes: 20
         run: xvfb-run --auto-servernum npm start -- --test ../language-gfm/spec
+      - name: Run the Jasmine spec suite with worker syntax
+        working-directory: lumine
+        timeout-minutes: 20
+        env:
+          LUMINE_SYNTAX_EXECUTION: worker
+        run: xvfb-run --auto-servernum npm start -- --test ../language-gfm/spec
