@@ -28,7 +28,7 @@ describe("Markdown link boundaries", () => {
     );
   }
 
-  function expectLink(text) {
+  async function expectLink(text) {
     const range = rangeFor(text);
     for (let index = 0; index < text.length; index++) {
       const position = editor
@@ -36,13 +36,13 @@ describe("Markdown link boundaries", () => {
         .positionForCharacterIndex(
           editor.getBuffer().characterIndexForPosition(range.start) + index,
         );
-      expect(editor.bufferRangeForScopeAtPosition(".markup.underline.link", position)).toEqual(
-        range,
-      );
+      expect(
+        await editor.bufferRangeForScopeAtPosition(".markup.underline.link", position),
+      ).toEqual(range);
     }
     if (range.end.isLessThan(editor.getBuffer().getEndPosition()))
       expect(
-        editor.bufferRangeForScopeAtPosition(".markup.underline.link", range.end),
+        await editor.bufferRangeForScopeAtPosition(".markup.underline.link", range.end),
       ).toBeUndefined();
   }
 
@@ -71,7 +71,7 @@ describe("Markdown link boundaries", () => {
   ]) {
     it(`scopes exactly the ${name}`, async () => {
       await setText(source);
-      expectLink(destination);
+      await expectLink(destination);
     });
   }
 
@@ -88,39 +88,39 @@ describe("Markdown link boundaries", () => {
       "https://image-title.example",
     ])
       expect(
-        editor.bufferRangeForScopeAtPosition(".markup.underline.link", rangeFor(text).start),
+        await editor.bufferRangeForScopeAtPosition(".markup.underline.link", rangeFor(text).start),
       ).toBeUndefined();
-    expectLink(destination);
+    await expectLink(destination);
   });
 
   it("retains prose hyperlinks inside emphasis and code spans with literal escapes", async () => {
     const url = String.raw`https://example.com/?find=\*value`;
     await setText(`**${url}** and \`${url}\``);
-    expectLink(url);
+    await expectLink(url);
   });
 
   it("does not join a URL across a structured link", async () => {
     await setText("https://first.example/[guide](https://second.example/)Tail");
-    expectLink("https://first.example/");
-    expectLink("https://second.example/");
+    await expectLink("https://first.example/");
+    await expectLink("https://second.example/");
     expect(
-      editor.bufferRangeForScopeAtPosition(".markup.underline.link", rangeFor("Tail").start),
+      await editor.bufferRangeForScopeAtPosition(".markup.underline.link", rangeFor("Tail").start),
     ).toBeUndefined();
   });
 
   it("rebuilds annotation ownership after an edit and package unload", async () => {
     const url = "https://example.com/manual.pdf";
     await setText(url);
-    expectLink(url);
+    await expectLink(url);
     editor.setText(`[guide](<${url}>)`);
     await editor.languageMode.atTransactionEnd();
-    expectLink(url);
+    await expectLink(url);
     await lumine.packages.deactivatePackage("language-gfm");
     await lumine.packages.unloadPackage("language-gfm");
     await lumine.packages.activatePackage("language-gfm");
     editor.setGrammar(lumine.grammars.grammarForScopeName("source.gfm"));
     editor.setText(`**${url}**`);
     await editor.whenGrammarSettled();
-    expectLink(url);
+    await expectLink(url);
   });
 });

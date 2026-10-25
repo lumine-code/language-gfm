@@ -14,10 +14,16 @@ describe("GitHub Flavored Markdown sample fixtures", () => {
 
   it("parses sample.md without error", async () => {
     const editor = await lumine.workspace.open(path.join(__dirname, "fixtures", "sample.md"));
-    const languageMode = editor.getBuffer().getLanguageMode();
-    await languageMode.ready;
-
-    expect(editor.getGrammar().scopeName).toBe("source.gfm");
-    expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
+    try {
+      await editor.whenGrammarSettled();
+      const root = await editor.analyzeSyntax(
+        require.resolve("./helpers/syntax-inspection"),
+        "root",
+      );
+      expect(editor.getGrammar().scopeName).toBe("source.gfm");
+      expect(root.hasError).toBe(false);
+    } finally {
+      editor.destroy();
+    }
   });
 });
