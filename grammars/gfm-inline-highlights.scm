@@ -36,6 +36,10 @@
 ((uri_autolink) @punctuation.definition.end.uri-autolink.gfm
   (#set! adjust.startBeforeFirstMatchOf ">$"))
 
+((email_autolink) @markup.underline.link.gfm
+  (#set! adjust.offsetStart 1)
+  (#set! adjust.offsetEnd -1))
+
 ((link_text (image (image_description))) @_IGNORE_
   (#set! capture.final))
 
@@ -47,11 +51,13 @@
   (#set! adjust.startAfterFirstMatchOf "^\\[")
   (#set! adjust.endBeforeFirstMatchOf "]$"))
 
-(image
-  (link_destination) @markup.underline.link.gfm)
+((link_destination) @markup.underline.link.gfm
+  (#not-match? @markup.underline.link.gfm "^<"))
 
-(inline_link
-  (link_destination) @markup.underline.link.gfm)
+((link_destination) @markup.underline.link.gfm
+  (#match? @markup.underline.link.gfm "^<")
+  (#set! adjust.offsetStart 1)
+  (#set! adjust.offsetEnd -1))
 
 (link_title) @string.quoted.link-title.gfm
 

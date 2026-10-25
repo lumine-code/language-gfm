@@ -2,8 +2,10 @@
   "name": "language-gfm",
   "author": "lumine-code",
   "version": "1.0.0",
+  "main": "lib/main",
   "files": [
     "grammars",
+    "lib",
     "settings",
     "snippets",
     "spec",
@@ -23,6 +25,9 @@
   "engines": {
     "lumine": "^1.0.0"
   },
+  "specPackages": [
+    "language-hyperlink"
+  ],
   "bugs": {
     "url": "https://github.com/lumine-code/language-gfm/issues"
   },

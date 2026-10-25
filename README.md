@@ -18,7 +18,7 @@ To install `language-gfm` search for it in the Install pane of the Lumine settin
 
 ## Injections
 
-- Static Tree-sitter injections highlight URLs with `language-hyperlink`.
+- Tree-sitter injections highlight prose URLs with `language-hyperlink`; native captures own Markdown destinations and autolinks.
 
 ## Contributing
 

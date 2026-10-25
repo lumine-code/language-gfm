@@ -85,9 +85,13 @@
 
 ; Link definitions
 
-(link_reference_definition
-  (link_label)
-  (link_destination) @markup.underline.link.gfm)
+((link_destination) @markup.underline.link.gfm
+  (#not-match? @markup.underline.link.gfm "^<"))
+
+((link_destination) @markup.underline.link.gfm
+  (#match? @markup.underline.link.gfm "^<")
+  (#set! adjust.offsetStart 1)
+  (#set! adjust.offsetEnd -1))
 
 ((link_label) @meta.link.text.gfm
   (#set! adjust.offsetStart 1)
