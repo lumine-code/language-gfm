@@ -6,8 +6,8 @@ Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/l
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-markdown](https://github.com/tree-sitter-grammars/tree-sitter-markdown).
-- **Syntax highlighting**: full grammar coverage for GitHub Flavored Markdown files.
+- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-markdown](https://github.com/lumine-code/tree-sitter-markdown).
+- **Syntax highlighting**: highlights blocks, inline formatting, links and tables.
 - **Snippets**: shortcuts for common Markdown constructs.
 
 ![GitHub Markdown syntax highlighting at the default editor font size.](.github/demo.png)

@@ -5,7 +5,7 @@
   "parser": "tree-sitter-markdown",
   "injectionNames": ["markdown", "md", "gfm"],
   "treeSitter": {
-    "parserSource": "github:tree-sitter-grammars/tree-sitter-markdown/tree-sitter-markdown#b6dac978ea390d64f842d6c2a3fb5b80d902c834",
+    "parserSource": "github:lumine-code/tree-sitter-markdown/tree-sitter-markdown#8cb4fe833cdf7323fac0e1df6e5674d9f238a4f3",
     "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "markdown.wasm",
     "highlightsQuery": "gfm-highlights.scm",

@@ -68,6 +68,9 @@
   (code_fence_content) @markup.raw.block.fenced.gfm) @meta.embedded.block.fenced-code.gfm
 (indented_code_block) @markup.raw.block.indented.gfm @meta.embedded.block.indented-code.gfm
 
+(latex_block) @markup.raw.block.math.gfm
+(latex_span_delimiter) @punctuation.definition.math.gfm
+
 
 ; MISC
 ; ====
@@ -85,13 +88,7 @@
 
 ; Link definitions
 
-((link_destination) @markup.underline.link.gfm
-  (#not-match? @markup.underline.link.gfm "^<"))
-
-((link_destination) @markup.underline.link.gfm
-  (#match? @markup.underline.link.gfm "^<")
-  (#set! adjust.offsetStart 1)
-  (#set! adjust.offsetEnd -1))
+(link_destination) @markup.underline.link.gfm
 
 ((link_label) @meta.link.text.gfm
   (#set! adjust.offsetStart 1)

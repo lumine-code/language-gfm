@@ -11,9 +11,9 @@
 
 (strong_emphasis) @markup.bold.gfm
 ((strong_emphasis) @punctuation.definition.emphasis.begin.gfm
-  (#set! adjust.endAfterFirstMatchOf "^\\*\\*"))
+  (#set! adjust.endAfterFirstMatchOf "^(\\*\\*|__)"))
 ((strong_emphasis) @punctuation.definition.emphasis.end.gfm
-  (#set! adjust.startBeforeFirstMatchOf "\\*\\*$"))
+  (#set! adjust.startBeforeFirstMatchOf "(\\*\\*|__)$"))
 
 (strikethrough) @markup.strike.gfm
 
@@ -51,13 +51,7 @@
   (#set! adjust.startAfterFirstMatchOf "^\\[")
   (#set! adjust.endBeforeFirstMatchOf "]$"))
 
-((link_destination) @markup.underline.link.gfm
-  (#not-match? @markup.underline.link.gfm "^<"))
-
-((link_destination) @markup.underline.link.gfm
-  (#match? @markup.underline.link.gfm "^<")
-  (#set! adjust.offsetStart 1)
-  (#set! adjust.offsetEnd -1))
+(link_destination) @markup.underline.link.gfm
 
 (link_title) @string.quoted.link-title.gfm
 

@@ -26,7 +26,12 @@
     "lumine": "^1.0.0"
   },
   "specPackages": [
-    "language-hyperlink"
+    "language-css",
+    "language-html",
+    "language-hyperlink",
+    "language-javascript",
+    "language-latex",
+    "language-python"
   ],
   "bugs": {
     "url": "https://github.com/lumine-code/language-gfm/issues"

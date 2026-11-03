@@ -1,7 +1,3 @@
-const path = require("path");
-
-const packagePath = (name) => path.resolve(__dirname, "..", "..", name);
-
 describe("GitHub Flavored Markdown tree-sitter grammar", () => {
   let editor;
 
@@ -27,6 +23,107 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
   });
 
   afterEach(() => editor?.destroy());
+
+  it("keeps intraword underscores literal across scientific notation", async () => {
+    const text = "Teraz jest poprawne Φ_2. Współczynnik λ_4 przyjęty na korzyść bezpieczną.";
+    await setText(`${text}\n`);
+    for (const token of ["_2", "Współczynnik", "λ_4"]) {
+      expect(await scopesFor(0, text.indexOf(token))).not.toContain("markup.italic.gfm");
+      expect(await scopesFor(0, text.indexOf(token))).not.toContain("markup.bold.gfm");
+    }
+  });
+
+  for (const [text, scope] of [
+    ["_tekst1_", "markup.italic.gfm"],
+    ["__tekst1__", "markup.bold.gfm"],
+  ]) {
+    it(`highlights numeric suffixes inside ${text}`, async () => {
+      await setText(`${text}\n`);
+      expect(await scopesFor(0, text.indexOf("1"))).toContain(scope);
+      expect(await scopesFor(0, 0)).toContain("punctuation.definition.emphasis.begin.gfm");
+      expect(await scopesFor(0, text.length - 1)).toContain(
+        "punctuation.definition.emphasis.end.gfm",
+      );
+    });
+  }
+
+  it("updates underscore emphasis correctly through edits and undo", async () => {
+    await setText("Φ_2. Współczynnik λ_4\n");
+    editor.getBuffer().setTextInRange(
+      [
+        [0, 0],
+        [0, 3],
+      ],
+      "_2_",
+    );
+    await editor.whenGrammarSettled();
+    expect(await scopesFor(0, 1)).toContain("markup.italic.gfm");
+    expect(await scopesFor(0, 7)).not.toContain("markup.italic.gfm");
+    editor.undo();
+    await editor.whenGrammarSettled();
+    expect(await scopesFor(0, 1)).not.toContain("markup.italic.gfm");
+    expect(await scopesFor(0, 7)).not.toContain("markup.italic.gfm");
+  });
+
+  it("leaves angle delimiters outside the highlighted link destination", async () => {
+    const text = "[label](<target.md>)";
+    await setText(`${text}\n`);
+    expect(await scopesFor(0, text.indexOf("target"))).toContain("markup.underline.link.gfm");
+    expect(await scopesFor(0, text.indexOf(".md") + 2)).toContain("markup.underline.link.gfm");
+    expect(await scopesFor(0, text.indexOf("<"))).not.toContain("markup.underline.link.gfm");
+    expect(await scopesFor(0, text.indexOf(">"))).not.toContain("markup.underline.link.gfm");
+  });
+
+  it("keeps empty cells inside one table after deleting cell content", async () => {
+    await setText("| a | b |\n|---|---|\n| x | y |\n| z | w |\n");
+    editor.getBuffer().setTextInRange(
+      [
+        [2, 1],
+        [2, 4],
+      ],
+      "",
+    );
+    await editor.whenGrammarSettled();
+    const syntax = await root(["pipe_table", "pipe_table_row"]);
+    expect(syntax.hasError).toBe(false);
+    expect(syntax.nodes.pipe_table.length).toBe(1);
+    expect(syntax.nodes.pipe_table_row.length).toBe(2);
+    expect(await scopesFor(2, 3)).toContain("markup.other.table-cell.data.gfm");
+  });
+
+  it("keeps a non-one ordered marker inside its paragraph", async () => {
+    await setText("Paragraph\n2. continuation\n");
+    const syntax = await root(["list", "paragraph"]);
+    expect(syntax.hasError).toBe(false);
+    expect(syntax.nodes.list).toEqual([]);
+    expect(syntax.nodes.paragraph.length).toBe(1);
+  });
+
+  it("parses the last heading without a final newline", async () => {
+    await setText("# Heading");
+    expect((await root()).hasError).toBe(false);
+    expect(await scopesFor(0, 3)).toContain("markup.heading.heading-1.gfm");
+  });
+
+  it("keeps display math opaque and injects the LaTeX grammar", async () => {
+    await lumine.packages.activatePackage("language-latex");
+    await setText("$$\na\n=\nb\n$$\n\n# Heading\n");
+    const syntax = await root(["latex_block", "setext_heading"]);
+    expect(syntax.hasError).toBe(false);
+    expect(syntax.nodes.latex_block.length).toBe(1);
+    expect(syntax.nodes.setext_heading).toEqual([]);
+    expect(await scopesFor(2, 0)).toContain("markup.raw.block.math.gfm");
+    expect(await scopesFor(2, 0)).toContain("text.tex.latex");
+    expect(await scopesFor(6, 3)).toContain("markup.heading.heading-1.gfm");
+  });
+
+  it("keeps quotation prefixes outside the injected display math", async () => {
+    await lumine.packages.activatePackage("language-latex");
+    await setText("> $$\n> a = b\n> $$\n");
+    expect(await scopesFor(1, 4)).toContain("text.tex.latex");
+    expect(await scopesFor(1, 0)).not.toContain("text.tex.latex");
+    expect(await scopesFor(1, 0)).toContain("markup.quote.blockquote.gfm");
+  });
 
   for (const comment of ["<!-->", "<!--->"]) {
     it(`ends the short ${comment} comment before the following heading`, async () => {
@@ -129,8 +226,8 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
   });
 
   it("resolves fenced languages and replaces the child parser after an edit", async () => {
-    await lumine.packages.activatePackage(packagePath("language-javascript"));
-    await lumine.packages.activatePackage(packagePath("language-css"));
+    await lumine.packages.activatePackage("language-javascript");
+    await lumine.packages.activatePackage("language-css");
     await setText("```JS\nconst value = 1;\n```\n");
     expect(await scopesFor(1, 2)).toContain("source.js");
     const buffer = editor.getBuffer();
@@ -155,7 +252,7 @@ describe("GitHub Flavored Markdown tree-sitter grammar", () => {
   });
 
   it("aggregates inline HTML tags within each paragraph and skips plain prose", async () => {
-    await lumine.packages.activatePackage(packagePath("language-html"));
+    await lumine.packages.activatePackage("language-html");
     await setText("A <b>bold</b> and <i>italic</i>.\n\nAnother <em>tag</em>.\n\nPlain prose.\n");
     const layers = await layersFor("text.html.basic");
     expect(layers.length).toBe(2);
