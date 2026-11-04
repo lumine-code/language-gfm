@@ -11,7 +11,10 @@
     "highlightsQuery": "gfm-highlights.scm",
     "injectionsQuery": "gfm-injections.scm",
     "foldsQuery": "gfm-folds.scm",
-    "tagsQuery": "gfm-tags.scm"
+    "tagsQuery": "gfm-tags.scm",
+    "contentEditPolicies": {
+      "content-words": "../lib/content-edit-policy.js"
+    }
   },
   "fileTypes": [
     "markdown",

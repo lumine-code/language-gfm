@@ -31,7 +31,8 @@
     "language-hyperlink",
     "language-javascript",
     "language-latex",
-    "language-python"
+    "language-python",
+    "language-yaml"
   ],
   "bugs": {
     "url": "https://github.com/lumine-code/language-gfm/issues"
