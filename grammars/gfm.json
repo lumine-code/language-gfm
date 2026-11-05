@@ -1,7 +1,7 @@
 {
   "scopeName": "source.gfm",
   "type": "tree-sitter",
-  "name": "GitHub Markdown",
+  "name": "Markdown",
   "parser": "tree-sitter-markdown",
   "injectionNames": ["markdown", "md", "gfm"],
   "treeSitter": {

@@ -4,7 +4,7 @@
   "parser": "tree-sitter-markdown_inline",
   "injectionNames": ["markdown-inline-internal"],
   "treeSitter": {
-    "parserSource": "github:lumine-code/tree-sitter-markdown/tree-sitter-markdown-inline#8cb4fe833cdf7323fac0e1df6e5674d9f238a4f3",
+    "parserSource": "github:lumine-code/tree-sitter-markdown/tree-sitter-markdown-inline#16ea475ed310252e9fcdc888e9af8f19a7bfdc3c",
     "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "markdown-inline.wasm",
     "highlightsQuery": "gfm-inline-highlights.scm",

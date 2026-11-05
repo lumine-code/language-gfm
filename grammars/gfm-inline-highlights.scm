@@ -40,6 +40,13 @@
   (#set! adjust.offsetStart 1)
   (#set! adjust.offsetEnd -1))
 
+; Bare autolinks already span only their URL or email text, with no angle
+; delimiters to remove and no punctuation offsets to apply.
+[
+  (bare_uri_autolink)
+  (bare_email_autolink)
+] @markup.underline.link.gfm
+
 ((link_text (image (image_description))) @_IGNORE_
   (#set! capture.final))
 

@@ -99,13 +99,10 @@ describe("Markdown link boundaries", () => {
     await expectLink(url);
   });
 
-  it("does not join a URL across a structured link", async () => {
-    await setText("https://first.example/[guide](https://second.example/)Tail");
-    await expectLink("https://first.example/");
-    await expectLink("https://second.example/");
-    expect(
-      await editor.bufferRangeForScopeAtPosition(".markup.underline.link", rangeFor("Tail").start),
-    ).toBeUndefined();
+  it("keeps Markdown punctuation inside a complete GFM bare URL", async () => {
+    const url = "https://first.example/[guide](https://second.example/)Tail";
+    await setText(url);
+    await expectLink(url);
   });
 
   it("rebuilds annotation ownership after an edit and package unload", async () => {
