@@ -31,8 +31,8 @@ SOFTWARE.
 
 ----- BEGIN THIRD-PARTY LICENSE: parser:lumine-code_tree-sitter-markdown -----
 Source: https://github.com/lumine-code/tree-sitter-markdown
-Commit: 7f2494fe479b5ef3ffbc357c7f26119d25295dc6
-Ref: 7f2494fe479b5ef3ffbc357c7f26119d25295dc6
+Commit: 133b530b4d4e9ba29bb2cdf228f59aa9f0bef0b8
+Ref: 133b530b4d4e9ba29bb2cdf228f59aa9f0bef0b8
 
 Original file: LICENSE
 
