@@ -17,10 +17,11 @@
 
 (strikethrough) @markup.strike.gfm
 
-((strikethrough) @punctuation.definition.strike.begin.gfm
-  (#set! adjust.endAfterFirstMatchOf "^~~"))
-((strikethrough) @punctuation.definition.strike.end.gfm
-  (#set! adjust.startBeforeFirstMatchOf "~~$"))
+(strikethrough
+  . (emphasis_delimiter) @punctuation.definition.strike.begin.gfm)
+
+(strikethrough
+  (emphasis_delimiter) @punctuation.definition.strike.end.gfm .)
 
 
 ; INLINE/REPLACED
