@@ -11,6 +11,7 @@
     "highlightsQuery": "gfm-highlights.scm",
     "injectionsQuery": "gfm-injections.scm",
     "foldsQuery": "gfm-folds.scm",
+    "tagsQuerySupportsLocalPath": true,
     "tagsQuery": "gfm-tags.scm",
     "contentEditPolicies": {
       "content-words": "../lib/content-edit-policy.js"
